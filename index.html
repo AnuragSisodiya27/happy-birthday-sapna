@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sapna!</title>
+    <!-- Internal CSS for styling -->
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif; /* Web-safe font for modern feel */
+            background: linear-gradient(135deg, #ffe6f7, #e6f7ff, #f7e6ff); /* Soft pastel gradient */
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        /* Welcome screen overlay */
+        #welcome {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeOut 3s ease-in-out 2s forwards;
+        }
+        #welcome h1 {
+            font-size: 3rem;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: bounce 2s infinite;
+        }
+        @keyframes fadeOut {
+            to { opacity: 0; visibility: hidden; }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        /* Main container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        /* Floating hearts and sparkles */
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            color: #ff69b4;
+            font-size: 2rem;
+            animation: float 6s linear infinite;
+        }
+        .sparkle {
+            position: absolute;
+            color: #ffd700;
+            font-size: 1.5rem;
+            animation: sparkleFloat 8s linear infinite;
+        }
+        @keyframes float {
+            from { transform: translateY(100vh) rotate(0deg); }
+            to { transform: translateY(-100px) rotate(360deg); }
+        }
+        @keyframes sparkleFloat {
+            from { transform: translateY(100vh) scale(0); opacity: 1; }
+            to { transform: translateY(-100px) scale(1); opacity: 0; }
+        }
+        /* Sections with fade-in */
+        .section {
+            margin: 50px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Button */
+        .surprise-btn {
+            background: linear-gradient(45deg, #ff69b4, #ffb6c1);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .surprise-btn:hover {
+            transform: scale(1.05);
+        }
+        /* Poem card */
+        .poem-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            display: none; /* Hidden initially */
+            animation: slideIn 1s ease forwards;
+        }
+        @keyframes slideIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .poem-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+        }
+        /* Final message */
+        .final-message {
+            font-size: 1.5rem;
+            color: #ff69b4;
+            margin-top: 50px;
+        }
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            animation: confettiFall 3s linear infinite;
+        }
+        @keyframes confettiFall {
+            from { transform: translateY(-100vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            #welcome h1 {
+                font-size: 2rem;
+            }
+            .poem-card {
+                padding: 20px;
+            }
+            .surprise-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome screen -->
+    <div id="welcome">
+        <h1>Happy Birthday Sapna 🎂</h1>
+    </div>
+
+    <!-- Floating hearts and sparkles background -->
+    <div class="floating-hearts" id="floating-elements"></div>
+
+    <!-- Main content -->
+    <div class="container">
+        <section class="section" id="intro">
+            <h2>Welcome to your special day!</h2>
+            <p>Let's make some magic happen.</p>
+        </section>
+
+        <section class="section" id="surprise-section">
+            <button class="surprise-btn" id="surprise-btn">Click for Surprise</button>
+            <div class="poem-card" id="poem-card">
+                <p>
+                    aaj ka din thoda extra special hai,<br>
+                    Kyuki aaj duniya ko aap jaise insaan mile the...<br>
+                    Aap har jagah ek positive vibe le aati hain,<br>
+                    Bina try kiye bhi comfortable feel kara deti Ho... <br><br>
+                    
+                    aap un logon mein se hain jo din ko better bana dete hain,<br>
+                    Sirf apni presence se hi...<br>
+                    Aapke saath baatein kabhi boring nahi hoti,<br>
+                    Chahe topic kuch bhi ho...<br><br>
+                
+                    Bas yahi wish hai ki aapko hamesha reasons mile khush rehne ke,<br>
+                    Aur kabhi kisi cheez ki kami na lage...<br><br>
+                
+                    Maa Radha aapki life me aapko har step pe support kare...<br><br>
+                
+                    I'm always With you.❤️ 
+                </p>
+            </div>
+        </section>
+
+        <section class="section final-message" id="final">
+            <p>Made with ❤️ by someone who values you a lot</p>
+        </section>
+    </div>
+
+    <!-- Internal JavaScript for animations and interactions -->
+    <script>
+        // Function to create floating hearts and sparkles
+        function createFloatingElements() {
+            const container = document.getElementById('floating-elements');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 6 + 's';
+                container.appendChild(heart);
+            }
+            for (let i = 0; i < 15; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = '✨';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.animationDelay = Math.random() * 8 + 's';
+                container.appendChild(sparkle);
+            }
+        }
+
+        // Function to create confetti burst on load
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.background = ['#ff69b4', '#ffd700', '#87ceeb', '#ffb6c1'][Math.floor(Math.random() * 4)];
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 3000); // Remove after animation
+            }
+        }
+
+        // Intersection Observer for fade-in sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Button click to reveal poem
+        document.getElementById('surprise-btn').addEventListener('click', () => {
+            const card = document.getElementById('poem-card');
+            card.style.display = 'block';
+            // Trigger confetti again on click
+            createConfetti();
+        });
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            createFloatingElements();
+            createConfetti();
+        });
+    </script>
+</body>
+</html>
